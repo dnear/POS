@@ -1,0 +1,27 @@
+Fungsi yang diinginkan:
+
+- Menu bisa di scan
+- Menu manual
+- Menu bisa diisi note
+- Bisa nambah setelah memesan
+- Menu yang dipilih di centang
+- Cetak struk pembayaran/ bill
+
+Data :
+- Data User
+- Data Barang
+- Data Kategori Barang
+
+Page :
+- login User
+- Dashboard
+- Kasir
+- Stok Barang
+
+Login/Logout
+Dashboard
+Jumlah admin
+Jumlah produk
+Menu
+Logistik
+Profil
