@@ -58,5 +58,13 @@ function getData($sql){
     return $rows;
 }
 
+//fungsi user login
+
+function userLogin(){
+    $userActive = $_SESSION["ssUserPOS"];
+    $dataUser   = getData("SELECT * FROM tbl_user WHERE username = '$userActive'")[0];
+    return $dataUser;
+}
+
 
 ?>
