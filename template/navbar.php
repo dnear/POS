@@ -20,7 +20,7 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li class="dropdown-item ">Welcome <strong><?= userLogin()['fullname'] ?></strong></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
+                        <li><a class="dropdown-item" href="<?= $main_url ?>auth/change-password.php">Change Password</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="<?= $main_url ?>auth/logout.php">Logout</a></li>
                     </ul>
