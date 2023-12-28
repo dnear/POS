@@ -1,6 +1,6 @@
 <?php 
 
-function uploadimg($url = null){
+function uploadimg($url = null, $name = null){
     $namafile   = $_FILES['image']['name'];
     $ukuran     = $_FILES['image']['size']; 
     $tmp        = $_FILES['image']['tmp_name'];
@@ -41,7 +41,12 @@ function uploadimg($url = null){
         }
     }
 
-    $namaFileBaru = rand(10, 1000) . '-' . $namafile;
+    if ($name != null) {
+        $namaFileBaru = $name . '.' . $ekstensiGambar;
+    }else {
+        $namaFileBaru = rand(10, 1000) . '-' . $namafile;    
+    }
+    
     
     move_uploaded_file($tmp,'../assets/image/' . $namaFileBaru );
     return $namaFileBaru;
