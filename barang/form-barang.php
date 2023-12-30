@@ -27,12 +27,24 @@ if (isset($_GET['msg'])) {
 $alert = '';
 
 if (isset($_POST['simpan'])) {
+    if ($msg != '') {
+        if (update($_POST)) {
+            echo "
+                <script>document.location.href = 'index.php?msg=updated';</script>
+            ";
+        }else {
+            echo "
+            <script>document.location.href = 'index.php';</script>
+        ";
+        }
+    }else {
     if (insert($_POST)) {
         $alert = '<div class="alert alert-success alert-dismissible fade show" role="alert">
         <i class="fa-regular fa-circle-check me-2"></i>
         <strong>Data Barang Berhasil Ditambahkan!</strong> 
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>';
+        }
     }
 }
 
@@ -74,7 +86,15 @@ if (isset($_POST['simpan'])) {
                                         <select name="satuan" id="satuan" class="form-control" required>
                                             <?php 
                                                 if ($msg != '') {
-                                                    
+                                                    $satuan = ["piece", "botol", "kaleng", "pouch"];
+                                                    foreach ($satuan as $sat) {
+                                                        if ($barang['satuan '] == $sat) { ?>
+                                                            <option value="<?= $sat ?>" selected><?= $sat ?></option>
+                                                        <?php } else { ?>
+                                                            <option value="<?= $sat ?>"><?= $sat ?></option>
+                                                            <?php 
+                                                        }
+                                                    }
                                                 }else { ?>
                                                 <option value="">-- Satuan Barang --</option>
                                             <option value="piece">PCS</option>
@@ -89,20 +109,20 @@ if (isset($_POST['simpan'])) {
                                     </div>
                                     <div class="mb-3">
                                         <label for="harga_beli" class="form-label">Harga Beli</label>
-                                        <input type="number" name="harga_beli" class="form-control" id="harga_beli" placeholder="Rp 0" autocomplete="off" required>
+                                        <input type="number" name="harga_beli" value="<?= $msg  != '' ? $barang['harga_beli'] : null ; ?>" class="form-control" id="harga_beli" placeholder="Rp 0" autocomplete="off" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="harga_jual" class="form-label">Harga Jual</label>
-                                        <input type="number" name="harga_jual" class="form-control" id="harga_jual" placeholder="Rp 0" autocomplete="off" required>
+                                        <input type="number" name="harga_jual" class="form-control" value="<?= $msg  != '' ? $barang['harga_jual'] : null ; ?>" id="harga_jual" placeholder="Rp 0" autocomplete="off" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="stock_minimal" class="form-label">Stok Minimal</label>
-                                        <input type="number" name="stock_minimal" class="form-control" id="stock_minimal" placeholder="0" autocomplete="off" required>
+                                        <input type="number" name="stock_minimal" class="form-control" value="<?= $msg  != '' ? $barang['stock_minimal'] : null ; ?>" id="stock_minimal" placeholder="0" autocomplete="off" required>
                                     </div> 
                                     <div class="mb-3">
-                                        
+                                        <input type="hidden" name="oldImg" value="<?= $msg  != '' ? $barang['gambar'] : null ; ?>" >
                                         <label for="foto" class="form-label">Foto Barang</label><br>
-                                        <img src="<?= $main_url ?>/assets/image/default-brg.png" width="100px" class="pb-2">
+                                        <img src="<?= $main_url ?>/assets/image/<?= $msg  != '' ? $barang['gambar'] : 'default-brg.png' ; ?>" width="100px" class="pb-2">
                                         <input class="form-control" type="file" name="image">
                                         <span class="text-muted small">Format gambar harus PNG | JPG | GIF</span>
                                     </div>

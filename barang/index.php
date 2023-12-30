@@ -35,6 +35,15 @@ if ($msg == 'deleted') {
             </div>';
 }
 
+if ($msg == 'updated') {
+    
+    $alert = 
+            '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fa-regular fa-circle-check me-2"></i>
+            <strong>Barang Berhasil Diperbarui</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>';
+}
 
 ?>
 
