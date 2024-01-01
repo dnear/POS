@@ -36,7 +36,7 @@
                                 Makanan & Minuman
                             </a>
                             <div class="sb-sidenav-menu-heading">Transaksi</div>
-                            <a class="nav-link" href="<?= $main_url ?>charts.html">
+                            <a class="nav-link" href="<?= $main_url ?>barang">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-money-bill-trend-up"></i></div>
                                 Penjualan
                             </a>

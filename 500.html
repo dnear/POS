@@ -11,40 +11,45 @@
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <div id="layoutError">
-            <div id="layoutError_content">
-                <main>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-6">
-                                <div class="text-center mt-4">
-                                    <h1 class="display-1">500</h1>
-                                    <p class="lead">Internal Server Error</p>
-                                    <a href="index.html">
-                                        <i class="fas fa-arrow-left me-1"></i>
-                                        Return to Dashboard
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </main>
-            </div>
-            <div id="layoutError_footer">
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
-        </div>
+        <button id="id-tombol" data-nilai="100" class="btn btn-primary">Klik saya</button>
+<div class="modal fade" id="id-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Nilai dari tombol adalah <span id="id-nilai"></span>.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Dapatkan tombol yang ingin Anda ambil nilainya
+  const tombol = document.querySelector('#id-tombol');
+
+  // Dapatkan modal yang ingin Anda tampilkan nilainya
+  const modal = document.querySelector('#id-modal');
+
+  // Dapatkan elemen yang ingin Anda tampilkan nilainya di dalam modal
+  const nilaiElemen = document.querySelector('#id-nilai');
+
+  // Tambahkan event listener untuk tombol
+  tombol.addEventListener('click', () => {
+    // Dapatkan nilai dari tombol
+    const nilai = tombol.dataset.nilai;
+
+    // Tampilkan nilai di dalam modal
+    nilaiElemen.innerHTML = nilai;
+    modal.show();
+  });
+</script>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
     </body>

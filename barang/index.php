@@ -88,6 +88,10 @@ if ($msg == 'updated') {
                                             <td>Rp.<?= number_format($brg['harga_beli'],0,',','.') ?></td>
                                             <td>Rp.<?= number_format($brg['harga_jual'],0,',','.') ?></td>
                                             <td>
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="btn btn-sm btn-secondary" id="tombol"  data-barcode="<?= $brg['barcode'] ?>" data-nama="<?= $brg['nama_barang'] ?>" title="Cetak Barcode" >
+                                                <i class="fas fa-barcode"></i>
+                                                </button>
                                                 <a href="form-barang.php?id=<?= $brg['id_barang'] ?>&gbr=<?= $brg['gambar'] ?>&msg=edit" title="Edit Barang"><button class="btn btn-sm btn-warning">Edit</button></a>
                                                 <a href="?id=<?= $brg['id_barang'] ?>&gbr=<?= $brg['gambar'] ?>&msg=deleted" title="Hapus Barang" onclick="return confirm('Anda yakin menghapus barang ini ?')"><button class="btn btn-sm btn-danger">Hapus</button></a>
                                             </td>
@@ -99,7 +103,77 @@ if ($msg == 'updated') {
                         </div>
                     </div>
                 </main>
+    
+            <!-- Modal -->
+            <div class="modal" tabindex="-1" role="dialog" id="myModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Cetak Barcode</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Tempat untuk menampilkan nilai -->
+                    <div class="form-group row">
+                        <label for="nmBrg" class="col-sm-3 col-form-label">Nama Barang</label>
+                        <div class="col-sm-9">
+                        <input type="text" class="form-control" id="nmBrg" value="" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="barcode" class="col-sm-3 col-form-label">Barcode</label>
+                        <div class="col-sm-9">
+                        <input type="text" class="form-control" id="barcode" value="" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="jmlCetak" class="col-sm-3 col-form-label">Jumlah Cetak</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" min="1" max="10" value="1" title="Maksimal 10" id="jmlCetak">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="preview"><i class="fas fa-print"></i> Cetak</button>
+                
+                </div>
+                </div>
+            </div>
+            </div>
 
+<script>
+    $(document).ready(function(){
+        // Tangani klik pada tombol
+        $(document).on("click", "#tombol", function(){
+            // Ambil nilai dari tombol
+            let barcode = $(this).data('barcode');
+            let nama = $(this).data('nama');
+            
+            // Tampilkan nilai di modal
+            $("#nmBrg").val(nama);
+            $("#barcode").val(barcode);
+            
+
+            // Tampilkan modal
+            $("#myModal").modal('show');
+        });
+
+
+        // Tangani klik pada tombol
+        $(document).on("click", "#preview", function(){
+            // Ambil nilai dari tombol
+            let barcode = $('#barcode').val();
+            let jmlCetak = $('#jmlCetak').val();
+            if (jmlCetak > 0 && jmlCetak <= 10) {
+                window.open("../report/r-barcode.php?barcode=" + barcode + "&jmlCetak=" + jmlCetak)
+            }
+            
+        });
+    });
+</script>
 
 <?php 
 
