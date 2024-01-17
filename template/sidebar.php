@@ -31,7 +31,7 @@
                             <!-- End Master Menu -->
                             
                             <div class="sb-sidenav-menu-heading">Menu</div>
-                            <a class="nav-link" href="<?= $main_url ?>charts.html">
+                            <a class="nav-link" href="<?= $main_url ?>barang">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-utensils"></i></div>
                                 Makanan & Minuman
                             </a>
@@ -39,6 +39,10 @@
                             <a class="nav-link" href="<?= $main_url ?>barang">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-money-bill-trend-up"></i></div>
                                 Penjualan
+                            </a>
+                            <a class="nav-link" href="<?= $main_url ?>pembelian">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-money-bill-trend-up"></i></div>
+                                Pembelian
                             </a>
                             <!-- Admin menu -->
                             <?php 

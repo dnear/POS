@@ -79,7 +79,7 @@ function update($data){
     $harga_beli     = mysqli_real_escape_string($koneksi, $data['harga_beli']);
     $harga_jual     = mysqli_real_escape_string($koneksi, $data['harga_jual']);
     $stockmin       = mysqli_real_escape_string($koneksi, $data['stock_minimal']);
-    $gbrLama       = mysqli_real_escape_string($koneksi, $data['oldImg']);
+    $gbrLama        = mysqli_real_escape_string($koneksi, $data['oldImg']);
     $gambar         = mysqli_real_escape_string($koneksi, $_FILES['image']['name']);
 
     //cek barcode lama
